@@ -1,0 +1,14 @@
+.filter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.selectFilter {
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #777;
+}
