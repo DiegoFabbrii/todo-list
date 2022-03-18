@@ -10,6 +10,15 @@ function TodoListContextProvider({ children }) {
     const [todoListFiltered, setTodoListFiltered] = useState([]);
     const [value, setValue] = useState("todas");
 
+    const getLocalTodos = () => {
+        if (localStorage.getItem("todos" === null)) {
+            localStorage.setItem("todos", JSON.stringify([]));
+        } else {
+            const localTodos = JSON.parse(localStorage.getItem("todos"));
+            setTodoList(localTodos);
+        }
+    };
+
     useEffect(() => {
         getLocalTodos();
     }, []);
@@ -28,6 +37,10 @@ function TodoListContextProvider({ children }) {
                 );
             }
         }
+
+        const saveLocalTodos = () => {
+            localStorage.setItem("todos", JSON.stringify(todoList));
+        };
 
         filterHandler();
         saveLocalTodos();
@@ -67,19 +80,6 @@ function TodoListContextProvider({ children }) {
                 return item;
             })
         );
-    };
-
-    const saveLocalTodos = () => {
-        localStorage.setItem("todos", JSON.stringify(todoList));
-    };
-
-    const getLocalTodos = () => {
-        if (localStorage.getItem("todos" === null)) {
-            localStorage.setItem("todos", JSON.stringify([]));
-        } else {
-            const localTodos = JSON.parse(localStorage.getItem("todos"));
-            setTodoList(localTodos);
-        }
     };
 
     return (
