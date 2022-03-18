@@ -41,7 +41,7 @@ function TodoListContextProvider({ children }) {
         filterHandler();
 
         const saveLocalTodos = () => {
-            localStorage.setItem("todos", JSON.stringify([todoList]));
+            localStorage.setItem("todos", JSON.stringify(todoList));
         };
 
         saveLocalTodos();
