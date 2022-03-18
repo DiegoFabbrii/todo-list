@@ -38,11 +38,12 @@ function TodoListContextProvider({ children }) {
             }
         }
 
+        filterHandler();
+
         const saveLocalTodos = () => {
-            localStorage.setItem("todos", JSON.stringify(todoList));
+            localStorage.setItem("todos", JSON.stringify([...todoList]));
         };
 
-        filterHandler();
         saveLocalTodos();
     }, [todoList, value]);
 
