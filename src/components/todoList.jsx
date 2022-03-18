@@ -9,27 +9,30 @@ function TodoList() {
 
     return (
         <ul className={style.list}>
-            {todoListFiltered.map((item, index) => {
-                return (
-                    <li
-                        key={index}
-                        className={`${style.listItem} ${
-                            item.completedTodo ? style.completed : ""
-                        }`}
-                    >
-                        <div>
-                            <p>{item.text}</p>
-                        </div>
+            {todoListFiltered &&
+                todoListFiltered.map((item, index) => {
+                    return (
+                        <li
+                            key={index}
+                            className={`${style.listItem} ${
+                                item.completedTodo ? style.completed : ""
+                            }`}
+                        >
+                            <div>
+                                <p>{item.text}</p>
+                            </div>
 
-                        <div className={style.icons}>
-                            <BiCheck
-                                onClick={() => completedHandler(item.id)}
-                            />
-                            <BiTrash onClick={() => removeHandler(item.id)} />
-                        </div>
-                    </li>
-                );
-            })}
+                            <div className={style.icons}>
+                                <BiCheck
+                                    onClick={() => completedHandler(item.id)}
+                                />
+                                <BiTrash
+                                    onClick={() => removeHandler(item.id)}
+                                />
+                            </div>
+                        </li>
+                    );
+                })}
         </ul>
     );
 }
