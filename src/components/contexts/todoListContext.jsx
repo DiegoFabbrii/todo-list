@@ -39,6 +39,15 @@ function TodoListContextProvider({ children }) {
         }
 
         filterHandler();
+
+        const saveLocalTodos = () => {
+            localStorage.setItem(
+                "todos",
+                JSON.stringify(todoList === null ? [] : todoList)
+            );
+        };
+
+        saveLocalTodos();
     }, [todoList, value]);
 
     const valueHandler = (e) => {
@@ -51,11 +60,6 @@ function TodoListContextProvider({ children }) {
             { text: newTodo, completedTodo: false, id: newId() },
             ...todoList,
         ]);
-        const saveLocalTodos = () => {
-            localStorage.setItem("todos", JSON.stringify(todoList));
-        };
-
-        saveLocalTodos();
         setNewTodo("");
     };
 
